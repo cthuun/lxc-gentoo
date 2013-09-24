@@ -350,6 +350,8 @@ write_distro_init_fixes()
 	if [ "${IPV4}" != "dhcp" ]; then
 		echo 'rc_provide="net"' >> "$ROOTFS/etc/rc.conf"
 	fi
+	# activate console at boot
+	sed -i -e 's/^#c1/c1/' "$ROOTFS/etc/inittab"
 }
 
 ################################################################################
